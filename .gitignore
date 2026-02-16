@@ -1,0 +1,7 @@
+# OpenClaw Workspace Gitignore
+.env
+*credential*
+creds.json
+temp_*
+memory/heartbeat-state.json
+knowledgebase/

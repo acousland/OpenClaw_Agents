@@ -1,0 +1,43 @@
+{
+  "bittensor": {
+    "wallet_name": "openclawd-miner",
+    "hotkey": "default",
+    "subnet_id": 1,
+    "network": "finney",
+    "timeout": 30,
+    "request_timeout": 20
+  },
+  "daemon": {
+    "ipc_method": "unix_socket",
+    "socket_path": "/tmp/openclawd-bittensor.sock",
+    "max_concurrent_tasks": 3,
+    "task_timeout_seconds": 60,
+    "log_level": "INFO",
+    "port": 8000,
+    "host": "127.0.0.1"
+  },
+  "wallet_mcp": {
+    "enabled": true,
+    "command": "latinum-wallet-mcp",
+    "network": "mainnet",
+    "auto_start": true
+  },
+  "performance_tracking": {
+    "enabled": true,
+    "update_interval_seconds": 300,
+    "history_file": "state/task-history.jsonl",
+    "metrics_file": "state/performance-metrics.json"
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "logs/miner.log",
+    "max_bytes": 10485760,
+    "backup_count": 7,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  },
+  "notifications": {
+    "enabled": true,
+    "telegram_enabled": false,
+    "critical_only": false
+  }
+}

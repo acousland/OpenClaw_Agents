@@ -1,0 +1,48 @@
+{
+  "budgets": {
+    "openai-gpt4": {
+      "monthly_allowance": 1000000,
+      "used_this_month": 0,
+      "daily_limit": 50000,
+      "hard_limit": true,
+      "cost_per_1k_tokens": 0.03,
+      "api_type": "chat_completion",
+      "model": "gpt-4",
+      "note": "Update monthly_allowance based on actual subscription level"
+    },
+    "claude-sonnet": {
+      "monthly_allowance": 800000,
+      "used_this_month": 0,
+      "daily_limit": 40000,
+      "hard_limit": true,
+      "cost_per_1k_tokens": 0.003,
+      "api_type": "messages",
+      "model": "claude-sonnet-4-20250514",
+      "note": "Update monthly_allowance based on actual subscription level"
+    },
+    "gemini-pro": {
+      "monthly_allowance": 2000000,
+      "used_this_month": 0,
+      "daily_limit": 80000,
+      "hard_limit": true,
+      "cost_per_1k_tokens": 0.0,
+      "api_type": "generate_content",
+      "model": "gemini-2.5-pro",
+      "note": "Free tier has high limits, update if using paid tier"
+    }
+  },
+  "allocation_strategy": "roi_weighted",
+  "allocation_rules": {
+    "min_budget_threshold_for_task_percent": 0.1,
+    "reject_task_if_budget_below_percent": 0.1,
+    "high_confidence_token_increase_multiplier": 1.2,
+    "low_roi_subnet_decrease_multiplier": 0.7
+  },
+  "tracking": {
+    "last_reset": "2024-01-01",
+    "reset_day_of_month": 1,
+    "track_by_subnet": true,
+    "track_by_task_type": true
+  },
+  "notes": "Hard limits prevent overspending. Update monthly_allowance on first of month based on actual billings. ROI thresholds control which tasks are worth the token spend."
+}

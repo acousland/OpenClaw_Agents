@@ -1,0 +1,92 @@
+{
+  "name": "bittensor-miner",
+  "version": "1.0.0-alpha",
+  "description": "Bittensor miner participation skill for OpenClawd. Enables judgment/inference-specialized mining using subscription-backed LLMs.",
+  "namespace": "patrick",
+  "skill": true,
+  "author": "Patrick (OpenClawd)",
+  "license": "Proprietary",
+  "scripts": {
+    "setup": "bash scripts/setup.sh",
+    "start": "bash scripts/start-miner.sh",
+    "stop": "bash scripts/stop-miner.sh",
+    "status": "bash scripts/check-status.sh"
+  },
+  "keywords": [
+    "bittensor",
+    "miner",
+    "cryptocurrency",
+    "inference",
+    "llm",
+    "validation"
+  ],
+  "dependencies": {
+    "bittensor": ">=4.0.0",
+    "latinum-wallet-mcp": ">=1.0.0",
+    "aiohttp": ">=3.8.0",
+    "cryptography": ">=41.0.0"
+  },
+  "python_dependencies": [
+    "bittensor>=4.0.0",
+    "latinum-wallet-mcp>=1.0.0",
+    "aiohttp>=3.8.0",
+    "cryptography>=41.0.0",
+    "requests>=2.28.0"
+  ],
+  "llm_apis_required": [
+    "openai",
+    "anthropic",
+    "google-generativeai"
+  ],
+  "documentation": {
+    "main": "SKILL.md",
+    "setup": "CONFIG.md",
+    "monitoring": "HEARTBEAT.md",
+    "notifications": "MESSAGING.md"
+  },
+  "entry_points": {
+    "miner_daemon": "src/miner_daemon.py",
+    "task_handler": "src/task_handler.py",
+    "performance_tracker": "src/performance_tracker.py"
+  },
+  "config": {
+    "primary": "config/miner-config.json",
+    "strategies": "config/subnet-profiles.json",
+    "budgets": "config/token-budgets.json",
+    "credentials": "config/llm-credentials.json"
+  },
+  "state": {
+    "operational": "state/miner-state.json",
+    "history": "state/task-history.jsonl",
+    "metrics": "state/performance-metrics.json"
+  },
+  "logging": {
+    "directory": "logs",
+    "file": "miner.log",
+    "level": "INFO",
+    "rotation": "daily",
+    "retention_days": 7
+  },
+  "requirements": {
+    "server": "24/7 uptime capable",
+    "memory": "512MB minimum",
+    "network": "Stable Internet, Bittensor network access",
+    "storage": "500MB for logs and state",
+    "api_keys": [
+      "OpenAI API key (optional but recommended)",
+      "Anthropic API key (optional but recommended)",
+      "Google Gemini API key (optional but recommended)"
+    ]
+  },
+  "features": [
+    "text-based inference mining",
+    "multi-llm routing",
+    "selective task participation",
+    "token budget tracking",
+    "performance optimization",
+    "validator feedback loop",
+    "automated strategy adaptation"
+  ],
+  "status": "alpha",
+  "notes": "This is Phase 1 MVP. Phase 2 adds multi-subnet support, advanced optimization, and automated staking."
+}

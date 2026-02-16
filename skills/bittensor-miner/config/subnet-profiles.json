@@ -1,0 +1,61 @@
+{
+  "subnets": {
+    "1": {
+      "name": "Text Prompting",
+      "enabled": true,
+      "preferred_llm": "openai-gpt4",
+      "backup_llm": "claude-sonnet",
+      "prompt_strategy": "structured_reasoning",
+      "min_confidence_threshold": 0.7,
+      "max_tokens_per_task": 1000,
+      "participation_rate": 0.8,
+      "task_types_to_handle": ["generation", "evaluation", "ranking"],
+      "description": "Text-based generation and evaluation. Validators reward structured reasoning and clear explanations."
+    },
+    "19": {
+      "name": "Nineteen Inference",
+      "enabled": false,
+      "preferred_llm": "claude-sonnet",
+      "backup_llm": "openai-gpt4",
+      "prompt_strategy": "concise_generation",
+      "min_confidence_threshold": 0.6,
+      "max_tokens_per_task": 500,
+      "participation_rate": 0.7,
+      "task_types_to_handle": ["generation", "evaluation"],
+      "description": "Fast inference subnet. Validators value speed and conciseness over verbosity."
+    }
+  },
+  "default_subnet": "1",
+  "prompt_strategies": {
+    "structured_reasoning": {
+      "description": "Use chain-of-thought and explicit reasoning steps",
+      "template": "structured_reasoning_template",
+      "best_for": ["evaluation", "ranking", "complex_generation"],
+      "token_multiplier": 1.2
+    },
+    "concise_generation": {
+      "description": "Minimal verbosity, direct answers",
+      "template": "concise_generation_template",
+      "best_for": ["fast_generation"],
+      "token_multiplier": 0.8
+    },
+    "calibrated_uncertainty": {
+      "description": "Express confidence levels and uncertainty",
+      "template": "calibrated_uncertainty_template",
+      "best_for": ["scoring", "ranking", "confidence_calibration"],
+      "token_multiplier": 1.0
+    }
+  },
+  "llm_preferences": {
+    "reasoning_heavy": "claude-sonnet",
+    "fast_generation": "gemini-flash",
+    "evaluation": "openai-gpt4",
+    "general": "openai-gpt4"
+  },
+  "performance_thresholds": {
+    "min_score_to_continue": 0.5,
+    "min_success_rate_percent": 50,
+    "roi_threshold_tao_per_1k_tokens": 0.0005
+  },
+  "notes": "Update LLM preferences and prompt strategies based on performance_tracker analysis. Changes should be gradual to avoid sudden validator score drops."
+}
